@@ -1,42 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>ru.unn.cs</groupId>
-    <artifactId>st-8</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <groupId>ru.unn.cs.st8</groupId>
+    <artifactId>papercdcase-selenium</artifactId>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
 
-    <name>st-8</name>
-    <url>http://www.papercdcase.com</url>
+    <name>ST-8 papercdcase Selenium driver</name>
+    <description>Selenium-based CLI that fills the papercdcase.com form and saves the resulting PDF.</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>17</maven.compiler.release>
+        <selenium.version>4.15.0</selenium.version>
+        <exec.plugin.version>3.2.0</exec.plugin.version>
     </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>${selenium.version}</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <sourceDirectory>src</sourceDirectory>
+        <finalName>papercdcase</finalName>
         <plugins>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>3.1.0</version>
+                <version>${exec.plugin.version}</version>
                 <configuration>
                     <mainClass>App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.15.0</version>
-        </dependency>
-    </dependencies>
 </project>
